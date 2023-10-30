@@ -1,0 +1,154 @@
+{% from "bootstrap5/form.html" import render_form %}
+{% include "header.html" %}
+
+
+
+
+
+
+
+<div class="  p-4 gap-4 py-md-5 align-items-center justify-content-center">
+  <div class="list-group">
+
+   <h1>Task Details</h1>
+    <label class="list-group-item d-flex gap-3">
+      <span class="pt-1 form-checked-content">
+        <strong>Title</strong>
+        <small class="d-block text-body-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text" viewBox="0 0 16 16">
+            <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+            <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+            
+          </svg>
+          {{ task.title|safe }}
+        </small>
+      </span>
+    </label>
+
+
+
+
+
+
+    <label class="list-group-item  gap-3">
+      <span class="pt-1 form-checked-content">
+        <strong>Description</strong>
+        <small class="d-block text-body-secondary">
+          {{ task.description|safe }}
+        </small>
+      </span>
+    </label>
+
+
+
+    <label class="list-group-item  gap-3">
+      <span class="pt-1 form-checked-content">
+        <strong>Category</strong>
+        <small class="d-block text-body-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+          </svg>
+          {{ task.category|safe }}
+        </small>
+      </span>
+    </label>
+
+
+
+
+
+    <label class="list-group-item d-flex gap-3">
+      <span class="pt-1 form-checked-content">
+        <strong>Status</strong>
+        <small class="d-block text-body-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench-adjustable" viewBox="0 0 16 16">
+            <path d="M16 4.5a4.492 4.492 0 0 1-1.703 3.526L13 5l2.959-1.11c.027.2.041.403.041.61Z"/>
+            <path d="M11.5 9c.653 0 1.273-.139 1.833-.39L12 5.5 11 3l3.826-1.53A4.5 4.5 0 0 0 7.29 6.092l-6.116 5.096a2.583 2.583 0 1 0 3.638 3.638L9.908 8.71A4.49 4.49 0 0 0 11.5 9Zm-1.292-4.361-.596.893.809-.27a.25.25 0 0 1 .287.377l-.596.893.809-.27.158.475-1.5.5a.25.25 0 0 1-.287-.376l.596-.893-.809.27a.25.25 0 0 1-.287-.377l.596-.893-.809.27-.158-.475 1.5-.5a.25.25 0 0 1 .287.376ZM3 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"/>
+          </svg>
+          {{ task.status|safe }}
+        </small>
+      </span>
+    </label>
+
+
+
+
+
+    <label class="list-group-item d-flex gap-3">
+      <span class="pt-1 form-checked-content">
+        <strong>Priority</strong>
+        <small class="d-block text-body-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-thermometer-high" viewBox="0 0 16 16">
+            <path d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585a1.5 1.5 0 0 1 1 1.415z"/>
+            <path d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0V2.5zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1z"/>
+          </svg>
+          {{ task.priority|safe }}
+        </small>
+      </span>
+    </label>
+
+
+
+
+
+    <label class="list-group-item d-flex gap-3">
+      <span class="pt-1 form-checked-content">
+        <strong>Start Date</strong>
+        <small class="d-block text-body-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5z"/>
+          </svg>
+          {{ task.startdate }}
+        </small>
+      </span>
+    </label>
+
+
+
+
+
+
+    <label class="list-group-item d-flex gap-3">
+      <span class="pt-1 form-checked-content">
+        <strong>Due Date</strong>
+        <small class="d-block text-body-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-start-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M10.229 5.055a.5.5 0 0 0-.52.038L7 7.028V5.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0V8.972l2.71 1.935a.5.5 0 0 0 .79-.407v-5a.5.5 0 0 0-.271-.445z"/>
+          </svg>
+          {{ task.duedate }}
+        </small>
+      </span>
+    </label>
+
+
+    
+    <label class="list-group-item d-flex gap-3">
+      <span class="pt-1 form-checked-content">
+        <strong>Reporter</strong>
+        <small class="d-block text-body-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16">
+            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514ZM11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/>
+            <path d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+          </svg>
+          {{ task.reporter.name|safe }}
+        </small>
+      </span>
+    </label>
+
+
+
+    <div class="d-grid gap-2 mt-4">
+      <a class="btn btn-outline-secondary" href="{{url_for('edit_task', task_id=task.id)}}">Edit TASK</a>
+      <a class="btn btn-outline-danger" href="{{url_for('delete_task', task_id=task.id)}}">DELETE TASK</a >
+    </div> 
+
+
+  </div>
+</div>
+
+
+
+
+{% include "footer.html" %}

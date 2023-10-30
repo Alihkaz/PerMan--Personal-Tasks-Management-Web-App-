@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendar</title>
+	<meta charset="UTF-8">
+	<link type="text/css"  rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}"/>
+	<link type="text/css"  rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}"/>
+	<link type="text/css"  rel="stylesheet" href="{{ url_for('static', filename='css/calendar.min.css') }}"/>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+		  name="viewport"
+		  content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<meta name="description" content="" />
+		<meta name="author" content="" />
+		<title>PerMan</title>
+		{% block styles %}
+		<!-- Load Bootstrap-Flask CSS here -->
+		{{ bootstrap.load_css() }}
+		<link
+		  rel="icon"
+		  type="image/x-icon"
+		  href="{{ url_for('static', filename='assets/favicon.ico') }}"
+		/>
+		<!-- Font Awesome icons (free version)-->
+		<script
+		  src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+		  crossorigin="anonymous"
+		></script>
+		<!-- Google fonts-->
+		<link
+		  href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+		  rel="stylesheet"
+		  type="text/css"
+		/>
+		<link
+		  href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+		  rel="stylesheet"
+		  type="text/css"
+		/>
+		<!-- Core theme CSS (includes Bootstrap)-->
+		<link
+		  href="{{ url_for('static', filename='css/styles.css') }}"
+		  rel="stylesheet"
+		/>
+	
+	
+		
+		  
+		  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&amp;display=swap" rel="stylesheet">
+		  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		  <link rel="stylesheet" href="css/style.css">
+		  
+		 
+		{% endblock %}
+	  </head>
+	
+	
+	
+	
+	
+	  
+	  <body>
+	
+	
+	
+		<div class="px-3 py-2 text-bg-dark border-bottom">
+		  <div class="container">
+			<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+	
+	
+			  <a href="#" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
+				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-calendar2-check" viewBox="0 0 16 16">
+				  <path d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+				  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+				  <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z"/>
+				</svg>
+				<h3 class="float-md-start p-1 mt-3">PerMan</h3>
+			  </a>
+	
+			  
+	
+	
+	
+			  <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+	
+	
+				<li>
+				  <a href="{{ url_for('get_board') }}" class="nav-link text-secondary">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-kanban-fill" viewBox="0 0 16 16">
+					  <path d="M2.5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2h-11zm5 2h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm-5 1a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3zm9-1h1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
+					</svg>
+					Board
+				  </a>
+				</li>
+	
+				<li>
+				  <a href="{{ url_for('calendar') }}" class="nav-link text-white">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
+					  <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+					  <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
+					</svg>
+					Calendar
+				  </a>
+				</li>
+	
+				<li>  
+					<a href="{{ url_for('logout') }}" class="nav-link text-danger">
+					  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+						<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+					  </svg>
+					  LogOut
+				   
+					</a>   
+				</li>
+			   
+				
+			</div>
+		  </div>
+		</div>
+	  </body>
+
+
+
+
+
+	<div class="container">
+		
+		<div class="page-header">
+
+			<div class="pull-right form-inline">
+				<div class="btn-group px-3">
+					<button class="btn btn-outline-dark" data-calendar-nav="prev"><< Prev</button>
+					<button class="btn btn-outline-danger" data-calendar-nav="today">Today</button>
+					<button class="btn btn-outline-dark" data-calendar-nav="next">Next >></button>
+				</div>
+				<div class="btn-group">
+					<button class="btn btn-outline-dark" data-calendar-view="year">Year</button>
+					<button class="btn btn-outline-dark active" data-calendar-view="month">Month</button>
+					<button class="btn btn-outline-dark" data-calendar-view="week">Week</button>
+					<button class="btn btn-outline-dark" data-calendar-view="day">Day</button>
+				</div>
+			</div>
+
+			<h3></h3>
+		</div>
+
+		<div class="row">
+			<div class="span9">
+				<div id="calendar"></div>
+			</div>
+			<div class="span3">
+				<div class="row-fluid">
+					<select id="first_day" class="span12 m-3">
+						<option value="" selected="selected">First day of week is Sunday</option>
+						<option value="1">First day of week is Monday</option>
+					</select>
+					<label class="checkbox">
+						<input type="checkbox" value="#events-modal" id="events-in-modal"> Open events in modal window
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" id="format-12-hours"> 12 Hour format
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" id="show_wb" checked> Show week box
+					</label>
+					<label class="checkbox">
+						<input type="checkbox" id="show_wbn" checked> Show week box number
+					</label>
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix"></div>
+		<br><br>
+
+		<div class="modal hide fade" id="events-modal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3>Event</h3>
+			</div>
+			<div class="modal-body" style="height: 400px">
+			</div>
+			<div class="modal-footer">
+				<a href="#" data-dismiss="modal" class="btn">Close</a>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+		
+		<!--<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>-->
+		<!--<script type="text/javascript" src="{{ url_for('static', filename='js/underscore-min.js') }}"></script>-->
+		<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+		<script type="text/javascript" src="{{ url_for('static', filename='js/calendar.min.js') }}"></script>
+		
+		<script>
+			(function($) {
+				"use strict";
+				var options = {
+					events_source: 'http://localhost:5000/calendar-events',
+					view: 'month',
+					tmpl_path: '../../static/tmpls/',
+					tmpl_cache: false,
+					onAfterViewLoad: function(view) {
+						$('.page-header h3').text(this.getTitle());
+						$('.btn-group button').removeClass('active');
+						$('button[data-calendar-view="' + view + '"]').addClass('active');
+					},
+					classes: {
+						months: {
+							general: 'label'
+						}
+					}
+				};
+
+				var calendar = $('#calendar').calendar(options);
+
+				$('.btn-group button[data-calendar-nav]').each(function(){
+					var $this = $(this);
+					$this.click(function() {
+						calendar.navigate($this.data('calendar-nav'));
+					});
+				});
+
+				$('.btn-group button[data-calendar-view]').each(function(){
+					var $this = $(this);
+					$this.click(function() {
+						calendar.view($this.data('calendar-view'));
+					});
+				});
+
+				$('#first_day').change(function(){
+					var value = $(this).val();
+					value = value.length ? parseInt(value) : null;
+					calendar.setOptions({first_day: value});
+					calendar.view();
+				});
+
+				$('#events-in-modal').change(function(){
+					var val = $(this).is(':checked') ? $(this).val() : null;
+					calendar.setOptions({modal: val});
+				});
+				$('#format-12-hours').change(function(){
+					var val = $(this).is(':checked') ? true : false;
+					calendar.setOptions({format12: val});
+					calendar.view();
+				});
+				$('#show_wbn').change(function(){
+					var val = $(this).is(':checked') ? true : false;
+					calendar.setOptions({display_week_numbers: val});
+					calendar.view();
+				});
+				$('#show_wb').change(function(){
+					var val = $(this).is(':checked') ? true : false;
+					calendar.setOptions({weekbox: val});
+					calendar.view();
+				});
+				$('#events-modal .modal-header, #events-modal .modal-footer').click(function(e){
+					//e.preventDefault();
+					//e.stopPropagation();
+				});
+			}(jQuery));
+		</script>
+	</div>
+</body>
+</html>
